@@ -1,0 +1,48 @@
+name: Deploy cetk-lt Documentation
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install MkDocs
+        run: |
+          pip install mkdocs-material
+          pip install mkdocs-autorefs mkdocs-include-markdown-plugin pymdown-extensions mike
+
+      - name: Read version from file
+        if: github.ref == 'refs/heads/main'
+        run: echo "CETK_LT_VERSION=$(cat VERSION)" >> $GITHUB_ENV
+
+      - name: Fetch gh-pages branch
+        run: |
+          git fetch origin gh-pages:gh-pages        
+
+      - name: Deploy Release Doc to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          mike deploy --branch gh-pages $CETK_LT_VERSION latest --push --update-aliases
+          mike set-default --branch gh-pages latest --push
+      
+      - name: Deploy Unstable Doc to Github Pages
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          mike deploy --branch gh-pages unstable --push
