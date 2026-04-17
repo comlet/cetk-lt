@@ -1,0 +1,72 @@
+site_name: comlet Embedded TestKit Log Transformer Documentation
+site_url: https://comlet.github.io/cetk-lt/
+site_author: comlet Verteilte Systeme GmbH
+site_description: >-
+  This is the documentation of comlet's Embedded TestKit Log Transformer (cetk-lt),
+  a CLI tool that transforms Robot Framework output and additional log sources into a
+  TimescaleDB database for visualization with any PostgreSQL-compatible tool.
+
+copyright: Copyright &copy; 2025-2026 comlet Verteilte Systeme GmbH
+nav:
+  - Overview: index.md
+  - cetk-lt:
+    - cli/index.md
+    - Installation: cli/install.md
+    - Global Options: cli/global_options.md
+    - Sub-Commands:
+      - cetk-lt rf: cli/rf.md
+      - cetk-lt log: cli/log.md
+    - Thirdparty OSS: cli/thirdparty_oss.md
+  - Timestamp & Timezone: timestamp.md
+  - Piping: piping.md
+theme:
+  name: material
+  logo: img/comlet_Claim-2021-darunter-800x403px-Web.png
+  scheme: default
+  primary: custom
+  accent: custom
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.tracking
+    - navigation.top
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.indexes
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - version-dropdown
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - pymdownx.snippets:
+      base_path: docs
+      auto_append: ["glossary.md"]
+  - pymdownx.extra
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+      toc_depth: 3
+extra_css:
+  - stylesheets/extra.css
+extra:
+  version:
+    provider: mike
