@@ -46,3 +46,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           mike deploy --branch gh-pages unstable --push
+          mike list --branch gh-pages | grep -q "latest" || mike alias --branch gh-pages unstable latest --push
+          mike set-default --branch gh-pages latest --push
