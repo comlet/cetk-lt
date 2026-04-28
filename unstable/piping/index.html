@@ -337,6 +337,8 @@
       
         
       
+        
+      
     
     
     
@@ -426,6 +428,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cli/global_options/" class="md-nav__link">
         
   
@@ -473,10 +503,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
   
   
@@ -494,8 +524,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -719,6 +749,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#shared-configuration-via-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Configuration via Environment Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -769,6 +810,17 @@
     <span class="md-ellipsis">
       
         Concurrent Execution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-configuration-via-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Configuration via Environment Variables
       
     </span>
   </a>
@@ -828,6 +880,31 @@ cetk-lt<span class="w"> </span>log<span class="w"> </span>mosquitto<span class="
 <p>When running concurrently, all commands must use the same <code>test_run_starttime</code>
 so that all data is assigned to the same test run in the database.</p>
 </div>
+<h2 id="shared-configuration-via-environment-variables">Shared Configuration via Environment Variables<a class="headerlink" href="#shared-configuration-via-environment-variables" title="Permanent link">&para;</a></h2>
+<p>Environment variables for database connection and other shared options apply to
+every <code>cetk-lt</code> invocation independently. Set them once in the shell or pipeline
+environment to avoid repeating them on each command:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CETK_LT_DB_HOST</span><span class="o">=</span>timescaledb
+<span class="nb">export</span><span class="w"> </span><span class="nv">CETK_LT_DB_USER_PW</span><span class="o">=</span>secret
+
+cetk-lt<span class="w"> </span>rf<span class="w"> </span>output.xml<span class="w"> </span>myjob<span class="w"> </span>mydb<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>cetk-lt<span class="w"> </span>log<span class="w"> </span>mosquitto<span class="w"> </span>source.log<span class="w"> </span>mydb
+</code></pre></div>
+<details class="example">
+<summary>GitLab CI — piped invocation with shared DB credentials</summary>
+<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">CETK_LT_DB_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;timescaledb&quot;</span>
+<span class="w">  </span><span class="nt">CETK_LT_DB_USER_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ci_user&quot;</span>
+<span class="w">  </span><span class="nt">CETK_LT_DB_USER_PW</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$DB_PASSWORD</span>
+
+<span class="nt">transform</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cetk-lt rf output.xml $JOB $DB | cetk-lt log mosquitto source.log $DB</span>
+</code></pre></div>
+<p>Both commands read <code>CETK_LT_DB_HOST</code> and the credentials from the pipeline
+environment. No credentials appear on the command line.</p>
+</details>
+<p>See <a href="../config/">Configuration</a> for the precedence rules.</p>
 
 
 

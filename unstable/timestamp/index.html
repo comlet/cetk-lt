@@ -339,6 +339,8 @@
       
         
       
+        
+      
     
     
     
@@ -428,6 +430,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cli/global_options/" class="md-nav__link">
         
   
@@ -475,10 +505,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
   
   
@@ -496,8 +526,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -684,6 +714,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#accepted-formats-for-source-log-timestamps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accepted Formats for Source Log Timestamps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#naive-timezone-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -800,6 +841,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#accepted-formats-for-source-log-timestamps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accepted Formats for Source Log Timestamps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#naive-timezone-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -892,6 +944,52 @@ This page describes the accepted input formats and the timezone handling rules.<
 </tr>
 </tbody>
 </table>
+<h2 id="accepted-formats-for-source-log-timestamps">Accepted Formats for Source Log Timestamps<a class="headerlink" href="#accepted-formats-for-source-log-timestamps" title="Permanent link">&para;</a></h2>
+<p>The following formats are accepted for timestamps inside source log files (e.g. Robot
+Framework keyword/suite timestamps, Mosquitto log lines). <abbr title="comlet Embedded TestKit Log Transformer">cetk-lt</abbr> tries them in order
+and stops at the first match:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Example</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%Y%m%d %H:%M:%S.%f</code></td>
+<td><code>20240101 12:00:00.000000</code></td>
+<td>Naive (no timezone)</td>
+</tr>
+<tr>
+<td><code>%Y-%m-%d %H:%M:%S.%f</code></td>
+<td><code>2024-01-01 12:00:00.000000</code></td>
+<td>Naive (no timezone)</td>
+</tr>
+<tr>
+<td><code>%Y-%m-%d %H:%M:%S.%fZ</code></td>
+<td><code>2024-01-01 12:00:00.000000Z</code></td>
+<td><abbr title="Coordinated Universal Time">UTC</abbr> (RFC 3339)</td>
+</tr>
+<tr>
+<td><code>%Y-%m-%d %H:%M:%S.%f+/-HH:MM</code></td>
+<td><code>2024-01-01 12:00:00.000000+01:00</code></td>
+<td><abbr title="Coordinated Universal Time">UTC</abbr> offset (RFC 3339)</td>
+</tr>
+<tr>
+<td><code>%Y-%m-%dT%H:%M:%S[.%f][Z\|+/-HH:MM]</code></td>
+<td><code>2024-01-01T12:00:00+01:00</code></td>
+<td>Naive / <abbr title="Coordinated Universal Time">UTC</abbr> / <abbr title="Coordinated Universal Time">UTC</abbr> offset (ISO 8601)</td>
+</tr>
+<tr>
+<td>Unix epoch (10 digits)</td>
+<td><code>1704067200</code></td>
+<td><abbr title="Coordinated Universal Time">UTC</abbr> (always)</td>
+</tr>
+</tbody>
+</table>
+<p>Naive formats are subject to <code>--source-log-naive-tz</code> (<a href="../cli/rf/#source-log-naive-tz"><code>cetk-lt rf</code></a>, <a href="../cli/log/#source-log-naive-tz"><code>cetk-lt log</code></a>) — see <a href="#naive-timezone-options">Naive Timezone Options</a>.</p>
 <h2 id="naive-timezone-options">Naive Timezone Options<a class="headerlink" href="#naive-timezone-options" title="Permanent link">&para;</a></h2>
 <p>When a timestamp carries no timezone information (a "naive" timestamp), two options
 let you specify which timezone to assume:</p>

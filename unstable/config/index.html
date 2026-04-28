@@ -12,9 +12,13 @@
         <meta name="author" content="comlet Verteilte Systeme GmbH">
       
       
-        <link rel="canonical" href="https://comlet.github.io/cetk-lt/unstable/glossary/">
+        <link rel="canonical" href="https://comlet.github.io/cetk-lt/unstable/config/">
       
       
+        <link rel="prev" href="../cli/install/">
+      
+      
+        <link rel="next" href="../cli/global_options/">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>Glossary - comlet Embedded TestKit Log Transformer Documentation</title>
+        <title>Configuration - comlet Embedded TestKit Log Transformer Documentation</title>
       
     
     
@@ -67,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#configuration" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Glossary
+              Configuration
             
           </span>
         </div>
@@ -186,10 +195,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../cli/" class="md-tabs__link">
           
   
@@ -311,6 +322,8 @@
       
   
   
+    
+  
   
   
     
@@ -334,16 +347,19 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -365,13 +381,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -416,10 +432,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../config/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -435,6 +460,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -487,17 +513,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
             
   
   
@@ -696,6 +725,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -712,9 +743,20 @@
 
 
 
-  <h1>Glossary</h1>
-
-
+<h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
+<p>Configuration can be given by two different entities:</p>
+<ul>
+<li>Environment variables</li>
+<li><a href="../cli/global_options/"><abbr title="Command Line Interface">CLI</abbr> options</a></li>
+</ul>
+<p><abbr title="Command Line Interface">CLI</abbr> options have the highest priority. Environment variables are suited for
+<abbr title="Continuous Integration/Continuous Deployment">CI/CD</abbr> pipelines where credentials are injected by the pipeline runner and
+are documented together with their respective <abbr title="Command Line Interface">CLI</abbr> option.</p>
+<div class="admonition note">
+<p class="admonition-title">Precedence</p>
+<p><abbr title="Command Line Interface">CLI</abbr> argument &gt; environment variable &gt; built-in default.
+A <abbr title="Command Line Interface">CLI</abbr> argument always overrides the corresponding variable.</p>
+</div>
 
 
 
