@@ -20,3 +20,6 @@ Show `cetk-lt`'s version and exit.
 Show detailed debug messages on stderr (DEBUG level).
 
 - Default: disabled
+- Environment variable: `CETK_LT_VERBOSE`[^1]
+
+[^1]: The variable needs to have a truth-y or false-y value; any other value causes an error with exit code 2.

@@ -51,7 +51,15 @@ Show help message and exit.
 
 ---
 
---8<-- "snippets/naive_tz_options.md"
+--8<-- "snippets/naive_tz_test_run_starttime.md"
+- Environment variable: `CETK_LT_LOG_TEST_RUN_STARTTIME_NAIVE_TZ`
+
+---
+
+--8<-- "snippets/naive_tz_source_log.md"
+- Environment variable: `CETK_LT_LOG_SOURCE_LOG_NAIVE_TZ`
+
+--8<-- "snippets/timezone_naive_tz_note.md"
 
 ---
 
@@ -63,6 +71,7 @@ Show help message and exit.
 Custom Python [`strptime`](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes) format string for the timestamp in the log file.
 
 - Default: `""` (auto-detection)
+- Environment variable: `CETK_LT_LOG_TIMESTAMP_FORMAT`
 
 ??? note "Auto-detected formats (Mosquitto)"
     When `-ltf` is not provided, cetk-lt auto-detects the timestamp format from

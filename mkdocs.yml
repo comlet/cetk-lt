@@ -12,6 +12,7 @@ nav:
   - cetk-lt:
     - cli/index.md
     - Installation: cli/install.md
+    - Configuration: config.md
     - Global Options: cli/global_options.md
     - Sub-Commands:
       - cetk-lt rf: cli/rf.md

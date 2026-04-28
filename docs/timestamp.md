@@ -14,6 +14,23 @@ The following formats are accepted wherever a `test_run_starttime` is expected
 | `%Y-%m-%d %H:%M:%S.%fZ` | `2024-01-01 12:00:00.000000Z` | UTC (RFC 3339) |
 | `%Y-%m-%d %H:%M:%S.%f+/-HH:MM` | `2024-01-01 12:00:00.000000+01:00` | UTC offset (RFC 3339) |
 
+## Accepted Formats for Source Log Timestamps
+
+The following formats are accepted for timestamps inside source log files (e.g. Robot
+Framework keyword/suite timestamps, Mosquitto log lines). cetk-lt tries them in order
+and stops at the first match:
+
+| Format | Example | Type |
+|--------|---------|------|
+| `%Y%m%d %H:%M:%S.%f` | `20240101 12:00:00.000000` | Naive (no timezone) |
+| `%Y-%m-%d %H:%M:%S.%f` | `2024-01-01 12:00:00.000000` | Naive (no timezone) |
+| `%Y-%m-%d %H:%M:%S.%fZ` | `2024-01-01 12:00:00.000000Z` | UTC (RFC 3339) |
+| `%Y-%m-%d %H:%M:%S.%f+/-HH:MM` | `2024-01-01 12:00:00.000000+01:00` | UTC offset (RFC 3339) |
+| `%Y-%m-%dT%H:%M:%S[.%f][Z\|+/-HH:MM]` | `2024-01-01T12:00:00+01:00` | Naive / UTC / UTC offset (ISO 8601) |
+| Unix epoch (10 digits) | `1704067200` | UTC (always) |
+
+Naive formats are subject to `--source-log-naive-tz` ([`cetk-lt rf`](cli/rf.md#source-log-naive-tz), [`cetk-lt log`](cli/log.md#source-log-naive-tz)) — see [Naive Timezone Options](#naive-timezone-options).
+
 ## Naive Timezone Options
 
 When a timestamp carries no timezone information (a "naive" timestamp), two options

@@ -44,3 +44,34 @@ wait
 !!! note
     When running concurrently, all commands must use the same `test_run_starttime`
     so that all data is assigned to the same test run in the database.
+
+## Shared Configuration via Environment Variables
+
+Environment variables for database connection and other shared options apply to
+every `cetk-lt` invocation independently. Set them once in the shell or pipeline
+environment to avoid repeating them on each command:
+
+```shell
+export CETK_LT_DB_HOST=timescaledb
+export CETK_LT_DB_USER_PW=secret
+
+cetk-lt rf output.xml myjob mydb \
+  | cetk-lt log mosquitto source.log mydb
+```
+
+??? example "GitLab CI — piped invocation with shared DB credentials"
+    ```yaml
+    variables:
+      CETK_LT_DB_HOST: "timescaledb"
+      CETK_LT_DB_USER_NAME: "ci_user"
+      CETK_LT_DB_USER_PW: $DB_PASSWORD
+
+    transform:
+      script:
+        - cetk-lt rf output.xml $JOB $DB | cetk-lt log mosquitto source.log $DB
+    ```
+
+    Both commands read `CETK_LT_DB_HOST` and the credentials from the pipeline
+    environment. No credentials appear on the command line.
+
+See [Configuration](config.md) for the precedence rules.
