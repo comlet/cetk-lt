@@ -1,0 +1,92 @@
+.md-header__button.md-logo img {
+    height: 60px !important;
+}
+
+:root {
+  /* main color of the header */
+  --md-primary-fg-color: #ffffff;
+  --md-primary-bg-color: #7f0000;
+  --md-accent-fg-color: #7f0000;
+  --md-header-fg-color: #000000;
+}
+
+/* Standard link color in the header navigation */
+.md-header__inner a,
+.md-tabs__link,
+.md-nav__link {
+  color: #7f0000 !important; /* Set your desired color */
+}
+
+/* Hover effect for links in the header navigation */
+.md-header__inner a:hover,
+.md-tabs__link:hover,
+.md-nav__link:hover {
+  color: #7f0000 !important; /* Set your desired accent color */
+}
+
+/* Highlight the active page in the navigation */
+.md-nav__link--active {
+  color: #ff9800 !important;
+  font-weight: bold; /* Makes the active page more visible */
+}
+
+/* Ensure links in dropdown menus are visible */
+.md-nav__item .md-nav__link {
+  color: #000000 !important;
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .md-header__inner a,
+[data-md-color-scheme="slate"] .md-tabs__link,
+[data-md-color-scheme="slate"] .md-nav__link {
+  color: #ffffff !important; /* White links for dark mode */
+}
+
+/* Dark mode hover effect */
+[data-md-color-scheme="slate"] .md-header__inner a:hover,
+[data-md-color-scheme="slate"] .md-tabs__link:hover,
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  color: #ff9800 !important;
+}
+
+/* Ensure links in the main content area are visible */
+.md-content a {
+  color: #7f0000 !important; /* Set to your preferred link color */
+  text-decoration: underline; /* Makes links more visible */
+}
+
+/* Hover effect for content links */
+.md-content a:hover {
+  color: #7f0000 !important; /* Accent color on hover */
+}
+
+.md-typeset .tabbed-labels > label {
+    font-size: 1.05em;      /* Default is ca. 0.98em */
+    padding: 0.6em 1.5em;   /* Default is 0.5em 1.5em */
+    letter-spacing: 0.03em; /* Optional */
+}
+
+@media (max-width: 768px) {
+    /* On lower resolutions, make tabs smaller */
+    .md-typeset .tabbed-labels > label {
+        font-size: 1em;
+        padding: 0.5em 1.2em;
+    }
+}
+
+/* Inline code links (backtick-styled links) in main content */
+.md-typeset a code {
+    /* Render like normal links: red text, no grey background */
+    /* background-color: transparent; */
+    color: #7f0000 !important;
+    text-decoration: underline;
+    /* box-shadow: none; */
+}
+
+/* Keep the same appearance on hover/focus to avoid color flip */
+.md-typeset a:hover code,
+.md-typeset a:focus code {
+    /* background-color: transparent; */
+    color: #7f0000 !important;
+    text-decoration: underline;
+}
