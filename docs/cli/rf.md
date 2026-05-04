@@ -33,6 +33,7 @@ Start timestamp of the test run.
 
 - Format: `%Y-%m-%d %H:%M:%S.%f` with optional timezone suffix `Z` or `+/-HH:MM`
 - Default: auto-detected from the first suite in `output.xml`
+- Environment variable: `CETK_LT_RF_TEST_RUN_STARTTIME`
 
 !!! note
     If omitted, cetk-lt reads the start timestamp from the first suite found in
@@ -40,7 +41,15 @@ Start timestamp of the test run.
 
     See [Timestamp & Timezone](../timestamp.md) for accepted formats and timezone handling.
 
---8<-- "snippets/naive_tz_options.md"
+--8<-- "snippets/naive_tz_test_run_starttime.md"
+- Environment variable: `CETK_LT_RF_TEST_RUN_STARTTIME_NAIVE_TZ`
+
+---
+
+--8<-- "snippets/naive_tz_source_log.md"
+- Environment variable: `CETK_LT_RF_SOURCE_LOG_NAIVE_TZ`
+
+--8<-- "snippets/timezone_naive_tz_note.md"
 
 ---
 
@@ -53,12 +62,14 @@ URL to the Robot Framework `log.html` artifact — stored in the database and
 used to link back to the RF log from visualization dashboards.
 
 - Default: `""` (no link stored)
+- Environment variable: `CETK_LT_RF_LOG_LINK`
 
 ### `--report-link` (str)
 URL to the Robot Framework `report.html` artifact — stored in the database and
 used to link back to the RF report from visualization dashboards.
 
 - Default: `""` (no link stored)
+- Environment variable: `CETK_LT_RF_REPORT_LINK`
 
 ---
 

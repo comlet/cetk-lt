@@ -40,8 +40,8 @@ for options that apply to all subcommands.
     | Code | Meaning |
     |------|---------|
     | `0` | Success |
-    | `1` | Invalid argument or timestamp format |
-    | `2` | Invalid CLI argument — missing required argument, invalid choice, or bad format |
+    | `1` | Runtime value error — check argument values, timestamp formats, and RF model compatibility (re-run with [`--verbose`](global_options.md) for details) |
+    | `2` | Invalid argument or environment variable — missing required argument, invalid choice, bad format, or unrecognised env var value |
     | `250` | Internal argument error |
     | `251` | Transformation validation failed |
     | `252` | Input file not found |
